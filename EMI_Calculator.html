@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMI caluculator</title>
+</head>
+<style>
+  #mainbox {
+    border: 2px solid black;
+    width: 400px;
+    margin: auto;
+    padding: 40px;
+    background-color: lightgreen;
+  }
+
+  th {
+    background-color: darkgrey;
+    color: blue;
+    font-size: 25px;
+    padding: 2px;
+  }
+
+  td {
+    background-color: lightgrey;
+    margin: 20px;
+  }
+
+  td label {
+    padding: 10px;
+  }
+
+  td input {
+    padding-left: 20px;
+  }
+</style>
+<script>
+  //logic wrriten here for EMI formula...
+  function calculate() {
+    let inputloan = document.getElementById("inputloan").value;
+    let inputmonth = document.getElementById("inputmonth").value;
+    let inputinterstrate = document.getElementById("inputinterstrate").value;
+
+    let findinterst = (inputloan * (inputinterstrate * 0.01)) / inputmonth;
+
+    let monthlypayment = ((inputloan / inputmonth) + findinterst).toFixed(2);
+
+    document.getElementById("result").value = monthlypayment;
+    //console.log(monthlypayment);
+  }
+</script>
+
+<body>
+  <div id="mainbox">
+    <h1>EMI caluculator</h1>
+    <form >
+      <table>
+        <tr>
+          <th>Discriptons</th>
+          <th> Your Values</th>
+        </tr>
+        <tr>
+          <td><label>Loan Ammount</label></td>
+          <td> <input type="number" id="inputloan" value=""></td>
+        </tr>
+        <tr>
+          <td><label>Loan Ammount in Months</label></td>
+          <td> <input type="number" id="inputmonth" value=""></td>
+        </tr>
+        <tr>
+          <td><label>Interst Rate (%)</label></td>
+          <td> <input type="number" id="inputinterstrate" value=""></td>
+        </tr>
+        <tr>
+          <td><label>Monthly Payment</label></td>
+          <td> <input type="text" id="result" value=""></td>
+        </tr>
+        <tr>
+          <td><input type="submit" value="Calculate" id="btn1" onclick="calculate();"></td>
+          <td><input type="reset" value="Reset" id="btn2"></td>
+        </tr>
+      </table>
+    </form>
+
+  </div>
+
+</body>
+
+</html>
